@@ -1,0 +1,17 @@
+import os
+import shutil
+
+def organize_files(folder):
+    for filename in os.listdir(folder):
+        ext = filename.split(".")[-1]
+
+        new_folder = os.path.join(folder, ext)
+
+        if not os.path.exists(new_folder):
+            os.makedirs(new_folder)
+
+        shutil.move(os.path.join(folder, filename), os.path.join(new_folder, filename))
+
+folder_path = input("Enter folder path: ")
+organize_files(folder_path)
+print("Files organized successfully!")
